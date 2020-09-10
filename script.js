@@ -16,6 +16,15 @@ addBookButton.addEventListener("click", () => {
   clearFormes();
 });
 
+function loadFromLocalStorage() {
+  myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+}
+
+function saveToLocalStorage() {
+  const myLibString = JSON.stringify(myLibrary);
+  localStorage.setItem("myLibrary", myLibString);
+}
+
 function clearFormes() {
   document.querySelector("#titleInput").value = "";
   document.querySelector("#authorInput").value = "";
@@ -31,16 +40,18 @@ function readBookFromInputs() {
   const book = new Book(title, author, numberOfPages, read);
   return book;
 }
+function deleteBook(book) {
+  let indexOfBook = myLibrary.indexOf(book);
+  myLibrary.splice(indexOfBook, 1);
+  saveToLocalStorage();
+  displayBooksInLibrary();
+}
 
 function createDeleteBookButton(book) {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
   deleteButton.classList.add("btn", "cancel");
-  deleteButton.addEventListener("click", function deleteBook() {
-    let indexOfBook = myLibrary.indexOf(book);
-    myLibrary.splice(indexOfBook, 1);
-    displayBooksInLibrary();
-  });
+  deleteButton.addEventListener("click", () => deleteBook(book));
   return deleteButton;
 }
 
@@ -94,6 +105,7 @@ Book.prototype.info = function () {
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
+  saveToLocalStorage();
   displayBooksInLibrary();
 }
 
@@ -105,11 +117,5 @@ function cancelForm() {
   document.querySelector("#newBookForm").style.display = "none";
 }
 
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
-addBookToLibrary(theHobbit);
-const harryPotter = new Book("Harry Potter", "J. K. Rowling", 295, true);
-addBookToLibrary(harryPotter);
-const theNameOfTheWind = new Book("The Name of the Wind", "Patrick Rothfuss", 646, true);
-addBookToLibrary(theNameOfTheWind);
-
+loadFromLocalStorage();
 displayBooksInLibrary();
