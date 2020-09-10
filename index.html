@@ -7,41 +7,46 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div>
-      <div>
-        <button id="newBookButton" class="btn">NEW BOOK</button>
-        
-        <div class="form-popup" id="newBookForm">
-          <div class="blocker"></div>
-          <div class="form-container">
-            <h2>Add new book</h2>
-            <label><b>Title</b></label>
-            <input type="text" placeholder="Enter Title" required id="titleInput" />
-            <label><b>Author</b></label>
-            <input type="text" placeholder="Enter Author" required id="authorInput" />
-            <label><b>Number of pages</b></label>
-            <input type="number" placeholder="Enter number of pages" required id="numberInput" />
-            <label><b>Read</b></label>
-            <input type="checkbox" required id="readInput" />
+    <div >
+      <div class="module">
+        <h1 class="main-text">Library</h1>
+      </div>
+      <div class="container">
+        <div>
+          <button id="newBookButton" class="btn">NEW BOOK</button>
 
-            <button class="btn" id="addBookButton">Add</button>
-            <button class="btn cancel" id="cancelFormButton">Close</button>
+          <div class="form-popup" id="newBookForm">
+            <div class="blocker"></div>
+            <div class="form-container">
+              <h2>Add new book</h2>
+              <label><b>Title</b></label>
+              <input type="text" placeholder="Enter Title" required id="titleInput" />
+              <label><b>Author</b></label>
+              <input type="text" placeholder="Enter Author" required id="authorInput" />
+              <label><b>Number of pages</b></label>
+              <input type="number" placeholder="Enter number of pages" required id="numberInput" />
+              <label><b>Read</b></label>
+              <input type="checkbox" required id="readInput" />
+
+              <button class="btn" id="addBookButton">Add</button>
+              <button class="btn cancel" id="cancelFormButton">Close</button>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <table id="table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Pages</th>
-              <th>Read</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div>
+          <table id="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>
